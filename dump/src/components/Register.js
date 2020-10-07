@@ -12,19 +12,18 @@ function Register(props) {
     const alert = useAlert()
 
     const handleChange = (event) => {
-        setRegister({ ...register, [event.target.name]: event.target.value })
+        setRegister({...register, [event.target.name]: event.target.value})
     }
-
+    
     const handleSubmit = (e) => {
         e.preventDefault()
-        Axios.post('http://localhost:8000/api/register', register)
+        Axios.post('http://localhost:8000/api/users/register', register)
             .then((response) => {
-                console.log("then registrer", response)
                 setRegister({ userName: '', email: '', password: '', firstName: '', lastName: '', numberStreet: '', street: '', postalCode: '', city: '' })
                 alert.show('Inscription validée!')
             })
             .catch((error) => {
-                console.log("catch registrer", error.response)
+                // console.log(error.response)
                 setErrorForm(error.response.data.error)
             })
     }
@@ -67,13 +66,13 @@ function Register(props) {
                 <p>Où habites-tu?</p>
 
                 <p>N° de voie</p>
-                <input type="text" id="numberStreetRegister" name="numberstreet" placeholder="1" value={register.numberStreet} onChange={handleChange} required />
+                <input type="text" id="numberStreetRegister" name="numberStreet" placeholder="1" value={register.numberStreet} onChange={handleChange} required />
 
                 <p>Nom de la rue</p>
                 <input type="text" id="streetRegister" name="street" placeholder="rue Sébastopole" value={register.street} onChange={handleChange} required />
 
                 <p>Code Postal</p>
-                <input type="text" id="postalCodeRegister" name="postalcode" placeholder="75001" value={register.postalCode} onChange={handleChange} required />
+                <input type="text" id="postalCodeRegister" name="postalCode" placeholder="75001" value={register.postalCode} onChange={handleChange} required />
 
                 <p>Ville</p>
                 <input type="text" id="cityRegister" name="city" placeholder="Paris" value={register.city} onChange={handleChange} required />

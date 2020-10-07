@@ -24,9 +24,9 @@ function Login(props) {
             url:'http://localhost:8000/api/users/login',
             data: JSON.stringify(login),
         })
-            .then((response) => {
-                console.log("then login",response)
-                localStorage.setItem("token", response.data.token)
+            .then((res) => {
+                console.log("then login",res)
+                localStorage.setItem("token", res.data.token)
                 setLogin({email:'', password:'' })
                 alert.show('Vous êtes connecté ;-)')
             })
