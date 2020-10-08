@@ -1,11 +1,13 @@
+// Imports
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import"./sass/style.scss";
 
 //Imports components
-import Header from './components/Header';
-import Home from './components/Home';
-import Login from './components/Login';
-import Register from './components/Register';
+import Header from './components/Header.jsx';
+import Home from './components/Home.jsx';
+import Login from './components/Login.jsx';
+import Register from './components/Register.jsx';
 
 // Imports 
 import { transitions, positions, Provider as AlertProvider } from 'react-alert'
@@ -29,19 +31,19 @@ function App() {
           <Header />
           <Switch>
 
-            <Route path="/post_report">
+            <Route exact path="/post_report">
               <PostRegister />
             </Route>
 
-            <Route path="/register">
+            <Route exact path="/register">
               <Register />
             </Route>
 
-            <Route path="/login">
+            <Route exact path="/login">
               <Login />
             </Route>
 
-            <Route path="/">
+            <Route exact path="/">
               <Home />
             </Route>
 

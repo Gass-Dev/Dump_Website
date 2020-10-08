@@ -1,6 +1,7 @@
+// Imports
 import React, { useState } from 'react';
 import Axios from 'axios';
-import { useAlert } from 'react-alert'
+import { useAlert } from 'react-alert';
 
 function Register(props) {
     const [register, setRegister] = useState(

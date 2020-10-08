@@ -1,7 +1,8 @@
+// Imports
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Axios from 'axios';
-import { useAlert } from 'react-alert'
+import { useAlert } from 'react-alert';
 
 function Login(props) {
     const [login, setLogin] = useState(
@@ -25,13 +26,11 @@ function Login(props) {
             data: JSON.stringify(login),
         })
             .then((res) => {
-                console.log("then login",res)
                 localStorage.setItem("token", res.data.token)
                 setLogin({email:'', password:'' })
                 alert.show('Vous êtes connecté ;-)')
             })
             .catch((error) => {
-                console.log("catch login",error)
                 setErrorForm(error.message)
             })
     }

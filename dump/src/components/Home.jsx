@@ -4,8 +4,8 @@ import ReactMapGL, { Marker, Popup } from 'react-map-gl';
 import Axios from 'axios';
 import marker from '../assets/images/logo-bin.svg';
 
-// Token MapBox
 const MAPBOX_TOKEN = 'pk.eyJ1IjoiZ2Fzcy1kZXYiLCJhIjoiY2tmNWlrMWs3MG5sMzJ5bm8wNmZzbzVxaCJ9.hAUlN6_W3j6zbC--NqYUkg';
+//process.env.
 
 function Home() {
     const [viewport, setViewport] = useState({
@@ -20,15 +20,33 @@ function Home() {
     const [selectedReport, setSelectedReport] = useState(null);
 
     useEffect(() => {
-        Axios.get('http://localhost:8000/api/postreports')
-            .then((response) => {
-                setReportsData(response.data.posts)
-                alert.show('Signalement enregistré 😊')
+        const geocode = async () => {
+            let response = await Axios.get('http://localhost:8000/api/postreports')
+            // setReportsData(response.data.posts)
+            // console.log(response)
+            // console.log(response.data.posts)
+            let reports = response.data.posts.map(async (post) => {
+                // console.log(post)
+                let numberStreet = post.numberStreet.toString()
+                let postalCode = post.postalCode.toString()
+                let result = await Axios.get(`https://api-adresse.data.gouv.fr/search/?q=${numberStreet}+${post.street}+${postalCode}+${post.city}`)
+                // console.log(result)
+                // console.log(result.data.features)
+                if (result.data.features.length) {
+                    post.coordinates = result.data.features[0].geometry.coordinates
+                    console.log(result.data.features[0].geometry.coordinates)
+                }
+                return post;
             })
-            .catch((error) => {
-                setReportsData(error)
+            console.log('tutu', reports)
+            Promise.all(reports).then(values => {
+                console.log(values);
+                setReportsData(values)
             })
+        }
+        geocode();
 
+        // console.log(reportsData)
         const listener = e => {
             if (e.key === "Signaler") {
                 setSelectedReport(null);

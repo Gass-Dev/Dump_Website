@@ -1,6 +1,7 @@
+// Imports
 import React, { useState } from 'react';
 import Axios from 'axios';
-import { useAlert } from 'react-alert'
+import { useAlert } from 'react-alert';
 
 function PostRegister(props) {
     const [post, setPost] = useState(
@@ -23,7 +24,6 @@ function PostRegister(props) {
                 alert.show('Signalement enregistré 😊')
             })
             .catch((error) => {
-                // console.log("catch post", error.response)
                 setErrorForm(error.response.data.error)
             })
     }
