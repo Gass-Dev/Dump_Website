@@ -1,4 +1,5 @@
-import React from 'react'
+// Imports
+import React from 'react';
 
 function Profil() {
     return (
