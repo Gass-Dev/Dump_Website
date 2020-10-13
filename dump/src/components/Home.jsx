@@ -22,16 +22,13 @@ function Home() {
     useEffect(() => {
         const geocode = async () => {
             let response = await Axios.get('http://localhost:8000/api/postreports')
-            // setReportsData(response.data.posts)
-            // console.log(response)
-            // console.log(response.data.posts)
+
             let reports = response.data.posts.map(async (post) => {
-                // console.log(post)
+
                 let numberStreet = post.numberStreet.toString()
                 let postalCode = post.postalCode.toString()
                 let result = await Axios.get(`https://api-adresse.data.gouv.fr/search/?q=${numberStreet}+${post.street}+${postalCode}+${post.city}`)
-                // console.log(result)
-                // console.log(result.data.features)
+
                 if (result.data.features.length) {
                     post.coordinates = result.data.features[0].geometry.coordinates
                     console.log(result.data.features[0].geometry.coordinates)
@@ -72,7 +69,7 @@ function Home() {
 
                 {reportsData.map(report => (
                     <Marker
-                        key={report.id}
+                        key={report}
                         latitude={48.8566969}
                         longitude={2.3514616}
                     >
@@ -92,8 +89,8 @@ function Home() {
 
                 {selectedReport ? (
                     <Popup
-                        latitude={48.8566969}
-                        longitude={2.3514616}
+                        latitude={reportsData}
+                        longitude={reportsData}
                         onClose={() => {
                             setSelectedReport(null);
                         }}
