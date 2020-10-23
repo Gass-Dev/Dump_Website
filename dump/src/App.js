@@ -1,18 +1,32 @@
 // Imports
-import React from 'react';
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import"./sass/style.scss";
+import React, { useEffect, useReducer } from 'react';
+import Axios from 'axios';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 //Imports components
-import Header from './components/Header.jsx';
-import Home from './components/Home.jsx';
-import Login from './components/Login.jsx';
-import Register from './components/Register.jsx';
+import Home from './components/pages/Home/Home';
+import Header from './components/organisms/Header';
+import Login from './components/pages/Login/Login';
+import Register from './components/pages/Register/Register';
+import PostRegister from './components/pages/PostReport/Post_Report';
 
 // Imports 
-import { transitions, positions, Provider as AlertProvider } from 'react-alert'
-import AlertTemplate from 'react-alert-template-basic'
-import PostRegister from './components/Post_Report';
+import "./components/config/style.scss";
+import { transitions, positions, Provider as AlertProvider } from 'react-alert';
+import AlertTemplate from 'react-alert-template-basic';
+// import { AuthContext } from './context/auth';
+import reducer from './context/reducer';
+
+export const AuthContext = React.createContext({
+  state: null,
+  dispatch: () => {},
+});
+
+const initialState = {
+  isAuthenticated: false,
+  user: null,
+  token: null,
+};
 
 const options = {
   // you can also just use 'bottom center'
@@ -24,33 +38,57 @@ const options = {
 }
 
 function App() {
+  const [state, dispatch] = useReducer(reducer.reducer, initialState);
+  console.log(reducer);
+
+  const token = localStorage.getItem("token");
+
+  useEffect(() => {
+    const fetchUser = async () => {
+      if (token) {
+        const result = await Axios.get("http://localhost:8001/api/user/me", {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+        if (result.status === 200) {
+          console.log("dispatch app.js ==>", result.data);
+          dispatch({
+            type: "LOAD_USER",
+            payload: result.data,
+          });
+        }
+      }
+    };
+    fetchUser();
+  }, []);
+
   return (
-    <>
-      <AlertProvider template={AlertTemplate} {...options}>
-        <Router>
-          <Header />
-          <Switch>
 
-            <Route exact path="/post_report">
-              <PostRegister />
-            </Route>
-
-            <Route exact path="/register">
-              <Register />
-            </Route>
-
-            <Route exact path="/login">
-              <Login />
-            </Route>
-
-            <Route exact path="/">
-              <Home />
-            </Route>
-
-          </Switch>
-        </Router>
-      </AlertProvider>
-    </>
+    <AlertProvider  template={AlertTemplate} {...options}>
+    <AuthContext.Provider value={{state,dispatch}}>
+      <Router>
+        <Header />
+        <Switch>
+          {/* <Route exact path="/profil">
+            <Profil />
+          </Route> */}
+          <Route exact path="/post_register">
+            <PostRegister />
+          </Route>
+          <Route exact path="/login">
+            <Login />
+          </Route>
+          <Route exact path="/register">
+            <Register />
+          </Route>
+          <Route exact path="/">
+            <Home />
+          </Route>
+        </Switch>
+      </Router>
+    </AuthContext.Provider>
+    </AlertProvider>
   );
 }
 

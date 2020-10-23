@@ -2,12 +2,12 @@
 import React, { useState, useEffect } from 'react';
 import ReactMapGL, { Marker, Popup } from 'react-map-gl';
 import Axios from 'axios';
-import marker from '../assets/images/logo-bin.svg';
+import marker from '../../../assets/images/logo-bin.svg';
 
 const MAPBOX_TOKEN = 'pk.eyJ1IjoiZ2Fzcy1kZXYiLCJhIjoiY2tmNWlrMWs3MG5sMzJ5bm8wNmZzbzVxaCJ9.hAUlN6_W3j6zbC--NqYUkg';
 //process.env.
 
-function Home() {
+function Mapbox() {
     const [viewport, setViewport] = useState({
         latitude: 48.8566969,
         longitude: 2.3514616,
@@ -29,12 +29,21 @@ function Home() {
 
                 if (result.data.features.length) {
                     post.coordinates = result.data.features[0].geometry.coordinates
-                    console.log(result.data.features[0].geometry.coordinates)
+                    // console.log(result.data.features[0].geometry.coordinates)
+                    console.log(result.data.features)
                 }
+
+                if (result.data.features.length) {
+                    post.properties = result.data.features[0].properties.name
+                    console.log(result.data.features[0].properties.name)
+                }
+
                 return post;
+
             })
+
             Promise.all(reports).then(values => {
-                console.log("value", values);
+                // console.log("value", values);
                 setReportsData(values)
             })
         }
@@ -45,6 +54,7 @@ function Home() {
                 setSelectedReport(null);
             }
         };
+
         window.addEventListener("keydown", listener);
 
         return () => {
@@ -77,23 +87,21 @@ function Home() {
                                     setSelectedReport(report);
                                 }}
                             >
-                                <img src={marker} alt="Report  Icon" width="24" height="24"/>
+                                <img src={marker} alt="Report  Icon" width="18" height="18" />
                             </button>
-                        </Marker>)
+                        </Marker>
+                    )
                 ))}
 
                 {selectedReport ? (
                     <Popup
-                        latitude={reportsData}
-                        longitude={reportsData}
+                        latitude={selectedReport.coordinates[0]}
+                        longitude={selectedReport.coordinates[1]}
                         onClose={() => {
                             setSelectedReport(null);
                         }}
                     >
-                        <div>
-                            {/* <h2>{selectedReport.properties.NAME}</h2>
-                            <p>{selectedReport.properties.DESCRIPTION}</p> */}
-                        </div>
+                        <div>dump</div>
                     </Popup>
                 ) : null}
             </ReactMapGL>
@@ -101,4 +109,4 @@ function Home() {
     );
 }
 
-export default Home;
+export default Mapbox;
