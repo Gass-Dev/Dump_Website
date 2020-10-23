@@ -13,9 +13,9 @@ function Register(props) {
     const alert = useAlert()
 
     const handleChange = (event) => {
-        setRegister({...register, [event.target.name]: event.target.value})
+        setRegister({ ...register, [event.target.name]: event.target.value })
     }
-    
+
     const handleSubmit = (e) => {
         e.preventDefault()
         Axios.post('http://localhost:8000/api/users/register', register)

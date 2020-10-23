@@ -20,7 +20,7 @@ function PostRegister(props) {
         e.preventDefault()
         Axios.post('http://localhost:8000/api/postreports/post', post)
             .then((response) => {
-                setPost({ userName: '', numberStreet: '', street: '', postalCode: '', city: '' , report: ''})
+                setPost({ userName: '', numberStreet: '', street: '', postalCode: '', city: '', report: '' })
                 alert.show('Signalement enregistré 😊')
             })
             .catch((error) => {
