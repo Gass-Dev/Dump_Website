@@ -2,27 +2,29 @@ import React, { useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import Axios from 'axios';
 import { useAlert } from 'react-alert';
-
+import { AuthContext } from '../../../App';
 
 function Login(props) {
     const { dispatch } = useContext(AuthContext);
     const [login, setLogin] = useState(
-        { email: '', password: '', isSubmitting: false, errorMessage: null }
+        { email: '', password: '', isSubmitting: false, errorMessage: null, }
     );
 
-    // const [errorForm, setErrorForm] = useState(" ")
+    const [errorForm, setErrorForm] = useState(" ")
 
     const alert = useAlert()
 
     const handleChange = (event) => {
-        setLogin({ ...login, [event.target.name]: event.target.value })
-    }
+        setLogin({ ...login, [event.target.name]: event.target.value });
+    };
 
     const handleSubmit = async (e) => {
         try {  
             e.preventDefault()
             setLogin({
                 ...login,
+                email: "",
+                password:"",
                 isSubmitting: true,
             });
             const result = await Axios({
@@ -30,7 +32,7 @@ function Login(props) {
                 headers: { 'Content-Type': 'application/json' },
                 url: 'http://localhost:8000/api/users/login',
                 data: JSON.stringify(login),
-            })
+            });
 
             if (result.status===200){
                 return (
@@ -38,6 +40,7 @@ function Login(props) {
                     alert.show('Vous êtes connecté ;-)')
                     )
                 }
+
         } catch(error){
             console.log(error.response)
             setLogin({
@@ -45,9 +48,9 @@ function Login(props) {
                 isSubmitting: false,
                 errorMessage: error.response,
             });
-            // setErrorForm(error.message)
+            setErrorForm(error.message)
         }
-    }
+    };
 
     return (
         <form className="loginForm" method="POST" action="/login" onSubmit={handleSubmit}>
@@ -59,12 +62,15 @@ function Login(props) {
 
             <div className="loginForm_email">
                 <p>Entre ton adresse mail pour te connecter</p>
-                <input className="loginForm_email_input" type="email" id="email" placeholder="dump@mail.com" name="email" value={login.email} onChange={handleChange} required />
+                <input className="loginForm_email_input" type="email" id="email" placeholder="dump@mail.com" name="email" value={login.email} onChange={handleChange}/>
             </div>
 
             <div className="loginForm_password">
                 <p>Et pour finir, entre ton mot de passe</p>
-                <input type="password" id="pass" placeholder="Mot de passe" name="password" value={login.password} onChange={handleChange} required />
+                <input type="password" id="pass" placeholder="Mot de passe" name="password" value={login.password} onChange={handleChange}/>
+            </div>
+
+            <div className="loginForm_error"> {errorForm} 
             </div>
 
             <button className="loginForm_submit" type="submit">Se connecter</button>

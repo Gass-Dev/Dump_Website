@@ -14,12 +14,12 @@ import PostRegister from './components/pages/PostReport/Post_Report';
 import "./components/config/style.scss";
 import { transitions, positions, Provider as AlertProvider } from 'react-alert';
 import AlertTemplate from 'react-alert-template-basic';
-// import { AuthContext } from './context/auth';
+// import AuthContext from './context/auth';
 import reducer from './context/reducer';
 
 export const AuthContext = React.createContext({
   state: null,
-  dispatch: () => {},
+  dispatch: () => { },
 });
 
 const initialState = {
@@ -39,12 +39,10 @@ const options = {
 
 function App() {
   const [state, dispatch] = useReducer(reducer.reducer, initialState);
-  console.log(reducer);
-
-  const token = localStorage.getItem("token");
 
   useEffect(() => {
     const fetchUser = async () => {
+      const token = localStorage.getItem("token");
       if (token) {
         const result = await Axios.get("http://localhost:8001/api/user/me", {
           headers: {
@@ -60,34 +58,35 @@ function App() {
         }
       }
     };
+
     fetchUser();
+
   }, []);
 
   return (
-
-    <AlertProvider  template={AlertTemplate} {...options}>
-    <AuthContext.Provider value={{state,dispatch}}>
-      <Router>
-        <Header />
-        <Switch>
-          {/* <Route exact path="/profil">
+    <AlertProvider template={AlertTemplate} {...options}>
+      <AuthContext.Provider value={{ state, dispatch }}>
+        <Router>
+          <Header />
+          <Switch>
+            {/* <Route exact path="/profil">
             <Profil />
           </Route> */}
-          <Route exact path="/post_register">
-            <PostRegister />
-          </Route>
-          <Route exact path="/login">
-            <Login />
-          </Route>
-          <Route exact path="/register">
-            <Register />
-          </Route>
-          <Route exact path="/">
-            <Home />
-          </Route>
-        </Switch>
-      </Router>
-    </AuthContext.Provider>
+            <Route exact path="/post_register">
+              <PostRegister />
+            </Route>
+            <Route exact path="/login">
+              <Login />
+            </Route>
+            <Route exact path="/register">
+              <Register />
+            </Route>
+            <Route exact path="/">
+              <Home />
+            </Route>
+          </Switch>
+        </Router>
+      </AuthContext.Provider>
     </AlertProvider>
   );
 }
