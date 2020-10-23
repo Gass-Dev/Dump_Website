@@ -1,10 +1,10 @@
 module.exports = {
-reducer:(state, action) => {
+  reducer: (state, action) => {
     // console.log("reducer check =>>", action);
     switch (action.type) {
       case "LOGIN":
         localStorage.setItem("token", action.payload.data.token);
-        localStorage.setItem("user", action.payload.data.user.id)
+        localStorage.setItem("user", action.payload.data.user)
         return {
           ...state,
           isAuthenticated: true,
@@ -29,4 +29,3 @@ reducer:(state, action) => {
     }
   }
 }
- // export default reducer;
