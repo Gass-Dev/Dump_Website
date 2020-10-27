@@ -1,0 +1,53 @@
+@import "../config/style.scss";
+
+.home {
+    width: 100vw;
+    height: 20vh;
+    display: flex;
+    flex-direction: column;
+
+    &_navBar{
+        flex-direction: row;
+        align-items: flex-start;
+        &_logo {
+            &_image {
+                width:250px;
+                padding: 20px;
+                margin-left: 10px;
+            }
+        }
+
+        &_direction{
+            margin-left: 60vw;
+            padding: 10px;
+            &_login{
+                text-align: center;
+                margin-right: 4vw;
+            }
+
+            &_register{
+                text-align: center;
+            }
+        }
+    }
+
+    &_content {
+        width: 100vw;
+        align-items: center;
+        margin-top: 80px;
+        margin-left: 50px;
+        display: flex;
+        flex-direction: row;
+
+        &_image {
+            &_dechets {
+                width: 50vw;
+                margin-left: 15vw;
+                align-items: center;
+
+            }
+        }
+
+    }
+
+}

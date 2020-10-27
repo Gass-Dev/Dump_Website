@@ -1,4 +1,3 @@
-// Imports
 import React from 'react';
 
 function Profil() {
