@@ -17,9 +17,8 @@ function Login() {
     };
 
     const handleSubmit = async (e) => {
-        e.preventDefault();
         try {  
-            // e.preventDefault()
+            e.preventDefault()
             setLogin({
                 ...login,
                 email: '',

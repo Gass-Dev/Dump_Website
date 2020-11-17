@@ -1,7 +1,13 @@
 // Imports
 import React, { useState } from 'react';
+
+// import { Link } from 'react-router-dom';
 import Axios from 'axios';
 import { useAlert } from 'react-alert';
+
+
+
+require('./_register.scss');
 
 function Register(props) {
     const [register, setRegister] = useState(
@@ -32,7 +38,13 @@ function Register(props) {
     return (
         <form className="registerForm" method="POST" action="/register" onSubmit={handleSubmit}>
 
-            <div>
+            {/* <div className="registerForm_logo">
+                <Link to='/' className="registerForm_logo_link">
+                    <img className="registerForm_logo_link" src={Logo} alt='logo' />
+                </Link>
+            </div> */}
+
+            <div className="registerForm_title">
                 <h2>Bienvenue sur DUMP</h2>
                 <p>Enregistre toi pour participer au nettoyage de ta ville</p>
             </div>

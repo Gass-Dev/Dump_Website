@@ -10,7 +10,7 @@ function Home() {
     if (state.isAuthenticated === false) {
         return (
             <div>
-                <Header />
+                {/* <Header /> */}
                 <HomePublic />
             </div>
         )

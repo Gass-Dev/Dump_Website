@@ -1,34 +1,110 @@
 @import './variables';
+@import './mixin';
 
 @font-face {
-	font-family: 'Oxygen';
-	font-style: bold;
-	font-weight: 700;
-	src: local('Oxygen'), url('../../assets/fonts/Oxygen-Bold.ttf') format('truetype');
+    font-family: 'Oxygen-Bold';
+    font-style: bold;
+    src: local('Oxygen-Bold'), url('../../assets/fonts/Oxygen-Bold.otf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Oxygen-Regular';
+    font-style: bold;
+    src: local('Oxygen-Regular'), url('../../assets/fonts/Oxygen.otf') format('truetype');
 }
 
 body {
-	margin: 0;
-	font-family: 'Oxygen', Arial, Helvetica, sans-serif;
-	background-color: $color-background-white;
+    margin: 0;
+    background-color: $color-background-white;
 }
 
-	button {
-		height: 20px;
-		border: 1px;
-		color: $color-green;
-		padding: 20px;
-		border-radius: 20px;
-		justify-content: center;
-		&:hover {
-			background-color: $Pastel-green;
-		}
-	}
-	
-	input {
-		font-family: 'Oxygen';
-	}
+button {
+    height: 4vh;
+    width: 35vw;
+    border: 1px;
+    color: $color-background-white;
+    font-size: 0.6rem;
+    border-radius: 30px;
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    background-color: $Pastel-water-Dark;
+    font-size: 1rem;
+    @include media(tablet) {
+        height: 6vh;
+        width: 20vw;
+        font-size: 1.4rem;
+    }
+    @include media(desktop) {
+        height: 6vh;
+        width: 12vw;
+        font-size: 1.3rem;
+    }
+    &:hover {
+        background-color: $Pastel-water;
+        cursor: pointer;
+    }
+}
 
-	link {
-		text-decoration: none;
-	}
+input {
+    height: 4vh;
+    width: 30vw;
+    font-family: 'Oxygen-Regular';
+    font-size: 0.8rem;
+    background-color: $color-background-white;
+    border-color: $Pastel-water-Dark;
+    border-radius: 30px;
+    border: 1px solid;
+    @include media(tablet) {
+
+    }
+    @include media(desktop) {
+            height: 4vh;
+    width: 30vw;
+    }
+}
+
+h2 {
+    font-size: 1.4rem;
+    font-family: 'Oxygen-Bold';
+    line-height: 3vh;
+    letter-spacing: 0.1rem;
+    @include media(tablet) {
+        font-size: 1.8rem;
+    }
+    @include media(desktop) {
+        font-size: 2rem;
+    }
+}
+
+h3 {
+    font-size: 0.8rem;
+    font-family: 'Oxygen-Regular';
+}
+
+h4 {
+    font-family: 'Oxygen-Regular';
+    font-size: 0.8rem;
+    color: #ffffff;
+    line-height: 2.2vh;
+    letter-spacing: 0.1rem;
+    @include media(tablet) {
+        font-size: 1rem;
+    }
+    @include media(desktop) {
+        font-size: 1.2rem;
+    }
+}
+
+p {
+    font-size: 1rem;
+    font-family: 'Oxygen-Regular';
+    @include media(tablet) {
+        
+    }
+    @include media(desktop) {
+        font-size: 1rem;
+    }
+}
