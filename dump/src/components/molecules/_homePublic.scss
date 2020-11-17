@@ -1,0 +1,155 @@
+@import "../config/style.scss";
+
+.home {
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+
+    &_navBar {
+        flex-direction: row;
+        align-items: center;
+        text-align:center;
+        height: 10vh;
+        border-bottom: 0.5px solid $color-trait;
+            @include media(tablet) {
+                display: flex;
+            }
+            @include media(desktop) {
+                height: 12vh;
+                display: flex;
+            }
+        &_image {
+            width: 30vw;
+            margin-top: 3vh;
+            margin-left: 1.5vh;
+            @include media(tablet) {
+                width: 20vw;
+                margin-top: 1.6vh;
+            }
+            @include media(desktop) {
+                width: 12vw;
+                margin-top: 1vh;
+            }
+        }
+        &_direction {
+            height: 8vh;
+            width: 100vw;
+            position: absolute;
+            bottom: 0px;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-around;
+            border-top: 0.5px solid $color-trait;
+            @include media(tablet) {
+                position: none;
+                border-top: none;
+                top: 0px;
+                justify-content: flex-end;
+                margin-top: 1vh;
+            }
+            @include media(desktop) {
+                position: none;
+                border-top: none;
+                top: 0px;
+                justify-content: flex-end;
+                margin-top: 2vh;
+            }
+            &_register {
+                text-decoration: none;
+                & button {
+                    background-color: $Pastel-salmon;
+                    @include media(tablet) {
+                        margin-right: 40px;
+                    }
+                    @include media(desktop) {
+                        margin-right: 40px;
+                    }
+                    &:hover {
+                        background-color: $Pastel-salmon-Dark;
+                        cursor: pointer;
+                    }
+                }
+            }
+            &_login {
+                text-decoration: none;
+                & button {
+                    @include media(tablet) {
+                        margin-right: 40px;
+                    }
+                    @include media(desktop) {
+                        margin-right: 40px;
+                    }
+                }
+            }
+        }
+    }
+
+    &_content {
+        width: 80vw;
+        height: 70vh;
+        background-color: $Pastel-water-Dark;
+        padding: 5%;
+        margin-top: 30px;
+        margin-left: 18px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        border-radius: 30px;
+        @include media(tablet) {
+            height: 74vh;
+            margin-left: 40px;
+            margin-top:40px;
+            flex-direction: row;
+        }
+        @include media(desktop) {
+            height: 58vh;
+            margin-left: 80px;
+            flex-direction: row;
+        }
+        &_text{
+            margin-top: 5vh;
+            margin-right: 10vw;
+            @include media(tablet) {
+                margin-left: 1vw;
+                margin-right: 0vw;
+                margin-top: -20vh;
+            }
+            @include media(desktop) {
+                margin-left: 1vw;
+                margin-right: 0vw;
+                margin-top: -8vh;
+            }
+            &_description {
+                margin-right: 10vw;
+                @include media(tablet) {
+                    margin-right: 2vw;
+                    margin-top: 5vw;
+                }
+                @include media(desktop) {
+                    margin-right: 2vw;
+                    margin-top: 5vw;
+                }
+            }
+        }
+        &_image {
+            &_dechets {
+                width: 50vw;
+                margin-top: 10vw;
+                align-items: center;
+                @include media(tablet) {
+                    width: 40vw;
+                    margin-top: 15vh;
+                    margin-right: 6vw;
+                }
+                @include media(desktop) {
+                    width: 30vw;
+                    margin-top: 0vh;
+                    margin-right: 0vw;
+                    margin-left: 15vw;
+                }
+            }
+        }
+
+    }
+}

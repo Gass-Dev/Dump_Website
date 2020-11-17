@@ -1,6 +1,14 @@
-.loginForm{
+@import "../config/style.scss";
+
+.loginForm {
+    width: 100vw;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+
+    &_welcom {
+        margin: 20vw;
+    }
+
 }

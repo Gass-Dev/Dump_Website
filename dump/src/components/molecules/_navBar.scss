@@ -1,0 +1,16 @@
+@import "../config/style.scss";
+
+.navBar {
+    width: 100vw;
+    height: 15vh;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+
+        &logo {
+            width: 5vw;
+            height: 2vh;
+            
+        }
+}
+

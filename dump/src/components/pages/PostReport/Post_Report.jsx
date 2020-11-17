@@ -18,7 +18,7 @@ function PostRegister(props) {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        Axios.post('http://localhost:8000/api/postreports/post', post)
+        Axios.post('http://localhost:8000/api/post_reports/post', post)
             .then((response) => {
                 setPost({ userName: '', numberStreet: '', street: '', postalCode: '', city: '', report: '' })
                 alert.show('Signalement enregistré 😊')
@@ -29,7 +29,7 @@ function PostRegister(props) {
     }
 
     return (
-        <form className="postRegisterForm" method="POST" action="/post_report" onSubmit={handleSubmit}>
+        <form className="postRegisterForm" method="POST" action="/post_reports/" onSubmit={handleSubmit}>
 
             <div>
                 <h2>Bienvenue sur DUMP</h2>

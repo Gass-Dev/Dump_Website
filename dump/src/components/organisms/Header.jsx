@@ -1,6 +1,5 @@
 import React from 'react';
-import NavMobile from '../molecules/NavMobile';
-// import NavDesktop from '../molecules/NavDesktop';
+import NavBar from '../molecules/NavBar';
 
 require('./_header.scss');
 
@@ -8,8 +7,7 @@ function Header() {
     return (
     <>
       <header>
-          <NavMobile />
-          {/* <NavDesktop /> */}
+          <NavBar />
       </header>
     </>
   );

@@ -12,7 +12,7 @@ function Mapbox() {
         latitude: 48.8566969,
         longitude: 2.3514616,
         width: "100vw",
-        height: "80vh",
+        height: "100vh",
         zoom: 12
     });
     const [reportsData, setReportsData] = useState([])
