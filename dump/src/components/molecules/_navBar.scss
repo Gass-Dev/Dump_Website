@@ -6,11 +6,36 @@
     display: flex;
     flex-direction: row;
     align-items: flex-start;
-
-        &logo {
-            width: 5vw;
-            height: 2vh;
-            
+    &_logo {
+        &_image {
+            &_link {
+                width: 30vw;
+            margin-top: 3vh;
+            margin-left: 1.5vh;
+            @include media(tablet) {
+                width: 20vw;
+                margin-top: 1.6vh;
+            }
+            @include media(desktop) {
+                width: 12vw;
+                margin-top: 1vh;
+            }
+            }
         }
+    }
+    &_report {
+        &_postReport{
+            text-decoration: none;
+                & button {
+                    @include media(tablet) {
+                        margin-right: 40px;
+                    }
+                    @include media(desktop) {
+                        margin-right: 40px;
+                    }
+                }
+        }
+    }
+
 }
 

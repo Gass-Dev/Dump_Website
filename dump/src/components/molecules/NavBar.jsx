@@ -23,23 +23,19 @@ const NavBar = () => {
                         </Link>
                     </div>
 
-                    <div className="navBar_direction">
-                        <Link to="post_reports/post" className="navBar_direction_postReport">
+                    <div className="navBar_report">
+
+                        <Link to="/post_reports/post" className="navBar_report_postReport">
                             <h2>Signaler</h2>
                         </Link>
 
                     </div>
-
-                    
-
                 </nav>
             </>
         );
     }
     return (
-        <div>
-            
-        </div>
+        <nav></nav>
     );
 }
 

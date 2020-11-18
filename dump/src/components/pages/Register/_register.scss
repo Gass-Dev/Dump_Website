@@ -1,5 +1,64 @@
+@import "../../config/style.scss";
 
 .registerForm {
-
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: auto;
+    margin-bottom: 140px;
+    &_logo {
+        &_link {
+        width: 40vw;
+        margin-top: 6vh;
+        margin-left: 1.5vh;
+        @include media(tablet) {
+            width: 20vw;
+        }
+        @include media(desktop) {
+            width: 15vw;
+        }
+        }
+    }
+    &_title {
+        margin-top: 20px;
+        & h2 {
+            text-align: center;
+        }
+    }
+    &_userName {
+        height: 11vh;
+    }
+    &_email {
+        height: 11vh;
+    }
+    &_password {
+        height: 11vh;
+    }
+    &_firstName {
+        height: 11vh;
+    }
+    &_adress {
+        height: 11vh;
+    }
+    &_submit {
+        background-color: $color-background-white;
+        bottom: 0px;
+        height: -20px;
+        position: fixed;
+        width: 100vw;
+        @include media(tablet) {
+            height: -20px;
+        }
+        &_button {
+            width: 80vw;
+            height: 6vh;
+            margin-bottom: 40px;
+            margin-top: 35px;
+            @include media(desktop) {
+            width: 30vw;
+            }
+        }
+    }
 }
 
