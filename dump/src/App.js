@@ -72,7 +72,7 @@ function App() {
             {/* <Route exact path="/profil">
             <Profil />
           </Route> */}
-            <Route exact path="/post_register">
+            <Route exact path="/post_reports/post">
               <PostRegister />
             </Route>
             <Route exact path="/login">

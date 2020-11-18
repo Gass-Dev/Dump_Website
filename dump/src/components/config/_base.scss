@@ -50,19 +50,19 @@ button {
 
 input {
     height: 4vh;
-    width: 30vw;
+    width: 80vw;
     font-family: 'Oxygen-Regular';
     font-size: 0.8rem;
     background-color: $color-background-white;
-    border-color: $Pastel-water-Dark;
-    border-radius: 30px;
-    border: 1px solid;
+    border-radius: 10px;
+    border: 1px solid $Pastel-water-Dark;
+    padding-left: 6px;
     @include media(tablet) {
-
+        font-size: 1.3rem;
     }
     @include media(desktop) {
-            height: 4vh;
-    width: 30vw;
+        height: 4vh;
+        width: 30vw;
     }
 }
 
@@ -102,7 +102,7 @@ p {
     font-size: 1rem;
     font-family: 'Oxygen-Regular';
     @include media(tablet) {
-        
+        font-size: 1.4rem;
     }
     @include media(desktop) {
         font-size: 1rem;

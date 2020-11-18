@@ -1,11 +1,10 @@
 // Imports
 import React, { useState } from 'react';
-
-// import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import Axios from 'axios';
 import { useAlert } from 'react-alert';
 
-
+import Logo from '../../../assets/images/logo_dump.png';
 
 require('./_register.scss');
 
@@ -38,15 +37,14 @@ function Register(props) {
     return (
         <form className="registerForm" method="POST" action="/register" onSubmit={handleSubmit}>
 
-            {/* <div className="registerForm_logo">
+            <div className="registerForm_logo">
                 <Link to='/' className="registerForm_logo_link">
                     <img className="registerForm_logo_link" src={Logo} alt='logo' />
                 </Link>
-            </div> */}
+            </div>
 
             <div className="registerForm_title">
-                <h2>Bienvenue sur DUMP</h2>
-                <p>Enregistre toi pour participer au nettoyage de ta ville</p>
+                <h2>Inscription</h2>
             </div>
 
             <div className="registerForm_userName">
@@ -62,7 +60,6 @@ function Register(props) {
             <div className="registerForm_password">
                 <p>Quel mot de passe as tu choisis?</p>
                 <input type="password" id="passRegister" name="password" placeholder="Mot de passe" value={register.password} onChange={handleChange} required />
-                <p>6 characters minimum, 1 capitale, 1 chiffre</p>
             </div>
 
             <div className="registerForm_firstName">
@@ -89,10 +86,11 @@ function Register(props) {
 
                 <p>Ville</p>
                 <input type="text" id="cityRegister" name="city" placeholder="Paris" value={register.city} onChange={handleChange} required />
-
             </div>
 
-            <button className="registerForm_submit" type="submit">Envoyer</button>
+            <div className="registerForm_submit">
+                <button className="registerForm_submit_button" type="submit">Envoyer</button>
+            </div>
 
             <div>
                 {errorForm}

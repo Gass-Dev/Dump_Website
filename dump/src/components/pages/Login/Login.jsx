@@ -4,6 +4,10 @@ import Axios from 'axios';
 import { useAlert } from 'react-alert';
 import { AuthContext } from '../../../App';
 
+import Logo from '../../../assets/images/logo_dump.png';
+
+require('./_login.scss');
+
 function Login() {
     const { dispatch } = useContext(AuthContext);
     const [login, setLogin] = useState(
@@ -52,9 +56,14 @@ function Login() {
     return (
         <form className='loginForm' method='POST' action='/login' onSubmit={handleSubmit}>
 
+            <div className="loginForm_logo">
+                <Link to='/' className="loginForm_logo_link">
+                    <img className="loginForm_logo_link" src={Logo} alt='logo' />
+                </Link>
+            </div>
+
             <div className='loginForm_welcome'>
-                <h2>Bienvenue sur DUMP</h2>
-                <p>Connect toi pour participer au nettoyage de ta ville</p>
+                <h2>Connexion</h2>
             </div>
 
             <div className='loginForm_email'>
@@ -70,13 +79,15 @@ function Login() {
             <div className='loginForm_error'> {login.errorMessage}
             </div>
 
-            <button className='loginForm_submit' type='submit'>Se connecter</button>
+            <div className="loginForm_submit">
+                <button className="loginForm_submit_button" type="submit">Se connecter</button>
+            </div>
 
-            <div>
-                <p>Tu n'as pas encore de compte?</p>
-                <Link to='/register' className='navBar_navDesktop_register'>
-                    <h2>S'inscrire</h2>
+            <div className="loginForm_register">
+                <Link to='/register' className='loginForm_register_button'>
+                    <button >S'inscrire</button>
                 </Link>
+                <p>Tu n'as pas encore de compte?</p>
 
             </div>
         </form>

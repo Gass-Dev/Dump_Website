@@ -1,2 +1,115 @@
-@import "../config/style.scss";
+@import "../../config/style.scss";
+
+.postRegisterForm {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 300px;
+    overflow: auto;
+    &_nav {
+        flex-direction: row;
+        height: 10vh;
+        border-bottom: 0.5px solid $color-trait;
+            @include media(tablet) {
+                display: flex;
+            }
+            @include media(desktop) {
+                height: 12vh;
+                display: flex;
+            }
+            &_logo {
+                &_link {
+                    width: 30vw;
+                    margin-top: 3vh;
+                    margin-left: 1.5vh;
+                    @include media(tablet) {
+                        width: 20vw;
+                        margin-top: 1.6vh;
+                    }
+                    @include media(desktop) {
+                        width: 12vw;
+                        margin-top: 1vh;
+                    }
+                }
+            }
+    }
+    &_content {
+        @include media(tablet) {
+                    margin-left: 40px;
+                }
+        &_title {
+            margin-top: 20px;
+            @include media(tablet) {
+                margin-top: 40px;
+            }
+            & h2 {
+                text-align: center;
+            }
+        }
+        &_type {
+            margin-top: 50px;
+            margin-left: 30px;
+            margin-bottom:20px;
+            @include media(tablet) {
+
+            }
+            &_encombrant {
+                display: flex;
+                align-items: center;
+                & label {
+                    @include media(tablet) {
+                        font-size: 1.4rem;
+                    }
+                }
+            }
+            &_dechet {
+                display: flex;
+                align-items: center;
+                & label {
+                    @include media(tablet) {
+                        font-size: 1.4rem;
+                    }
+                }
+            }
+            &_insalubrite {
+                display: flex;
+                align-items: center;
+                & label {
+                    @include media(tablet) {
+                        font-size: 1.4rem;
+                    }
+                }
+            }
+        }
+        
+        &_adress {
+            margin-left: 30px;
+            height: 11vh;
+        }
+
+        &_submit {
+            background-color: $color-background-white;
+            bottom: 0px;
+            height: -20px;
+            position: fixed;
+            width: 100vw;
+            margin-left: 30px;
+            @include media(tablet) {
+                height: -20px;
+            }
+            &_button {
+                width: 80vw;
+                height: 6vh;
+                margin-bottom: 80px;
+                margin-top: 35px;
+                margin-left: 0px;
+                @include media(desktop) {
+                width: 30vw;
+                }
+            }
+        }
+    }
+    
+}
 

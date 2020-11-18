@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import Mapbox from '../Mapbox/Mapbox';
-import Header from '../../organisms/Header';
+import NavBar from '../../molecules/NavBar';
 import HomePublic from '../../molecules/HomePublic';
 import { AuthContext } from '../../../App';
 
@@ -10,14 +10,13 @@ function Home() {
     if (state.isAuthenticated === false) {
         return (
             <div>
-                {/* <Header /> */}
                 <HomePublic />
             </div>
         )
     } else {
         return (
             <div>
-            <Header />
+            <NavBar />
             <Mapbox />
             </div>
         )

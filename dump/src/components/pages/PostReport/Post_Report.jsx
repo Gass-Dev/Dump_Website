@@ -1,7 +1,12 @@
 // Imports
 import React, { useState } from 'react';
 import Axios from 'axios';
+import { Link } from 'react-router-dom';
 import { useAlert } from 'react-alert';
+
+import Logo from '../../../assets/images/logo_dump.png';
+
+require('./_postReport.scss');
 
 function PostRegister(props) {
     const [post, setPost] = useState(
@@ -31,45 +36,61 @@ function PostRegister(props) {
     return (
         <form className="postRegisterForm" method="POST" action="/post_reports/" onSubmit={handleSubmit}>
 
-            <div>
-                <h2>Bienvenue sur DUMP</h2>
-                <p>Enregistre toi pour participer au nettoyage de ta ville</p>
+            <div className="postRegisterForm_nav">
+                <Link to='/' className="postRegisterForm_nav_logo">
+                    <img className="postRegisterForm_nav_logo_link" src={Logo} alt='logo' />
+                </Link>
             </div>
 
-            <div>
-                <p>Quel type de signalement souhaites-tu faire?</p>
-                <input type="radio" id="reportEncombrant" value="reportEncombrant" name='report' onChange={handleChange} required />
-                <label htmlFor="reportEncombrant">Encombrant</label>
+            <div className="postRegisterForm_content">
+                <div className="postRegisterForm_content_title">
+                    <h2>Signalement</h2>
+                </div>
 
-                <input type="radio" id="reportDechet" value="reportDechet" name='report' onChange={handleChange} required />
-                <label htmlFor="reportDechet">Déchet</label>
+                <div className="postRegisterForm_content_type">
+                    <p>Quel type de signalement souhaites-tu faire?</p>
+                    
+                    <div className="postRegisterForm_content_type_encombrant">
+                        <label htmlFor="reportEncombrant">Encombrant</label>
+                        <input type="radio" id="reportEncombrant" value="reportEncombrant" name='report' onChange={handleChange} required />
+                    </div>
 
-                <input type="radio" id="reportInsalubrite" value="reportInsalubrite" name='report' onChange={handleChange} required />
-                <label htmlFor="reportInsalubrite">Insalubrité</label>
+                    <div className="postRegisterForm_content_type_dechet">    
+                        <label htmlFor="reportDechet">Déchet</label>
+                        <input type="radio" id="reportDechet" value="reportDechet" name='report' onChange={handleChange} required />
+                    </div>
+                        
+                    <div className="postRegisterForm_content_type_insalubrite">
+                        <label htmlFor="reportInsalubrite">Insalubrité</label>
+                        <input type="radio" id="reportInsalubrite" value="reportInsalubrite" name='report' onChange={handleChange} required />
+                    </div>
 
-            </div>
+                </div>
 
-            <div className="postRegisterForm_adress">
-                <p>Où est ce signalement?</p>
+                <div className="postRegisterForm_content_adress">
+                    <p>Où est ce signalement?</p>
 
-                <p>N° de voie</p>
-                <input type="text" id="numberStreetRegister" name="numberStreet" placeholder="1" value={post.numberStreet} onChange={handleChange} required />
+                    <p>N° de voie</p>
+                    <input type="text" id="numberStreetRegister" name="numberStreet" placeholder="1" value={post.numberStreet} onChange={handleChange} required />
 
-                <p>Nom de la rue</p>
-                <input type="street" id="streetRegister" name="street" placeholder="rue Sébastopole" value={post.street} onChange={handleChange} required />
+                    <p>Nom de la rue</p>
+                    <input type="street" id="streetRegister" name="street" placeholder="rue Sébastopole" value={post.street} onChange={handleChange} required />
 
-                <p>Code Postal</p>
-                <input type="text" id="postalcodeRegister" name="postalCode" placeholder="75001" value={post.postalCode} onChange={handleChange} required />
+                    <p>Code Postal</p>
+                    <input type="text" id="postalcodeRegister" name="postalCode" placeholder="75001" value={post.postalCode} onChange={handleChange} required />
 
-                <p>Ville</p>
-                <input type="city" id="cityRegister" name="city" placeholder="Paris" value={post.city} onChange={handleChange} required />
+                    <p>Ville</p>
+                    <input type="city" id="cityRegister" name="city" placeholder="Paris" value={post.city} onChange={handleChange} required />
 
-            </div>
+                </div>
 
-            <button className="postRegisterForm_submit" type="submit">Envoyer</button>
-
-            <div>
-                {errorForm}
+                <div className="postRegisterForm_content_submit">
+                    <button className="postRegisterForm_content_submit_button" type="submit">Valider</button>
+                </div>
+                
+                <div>
+                    {errorForm}
+                </div>
             </div>
         </form>
     )
