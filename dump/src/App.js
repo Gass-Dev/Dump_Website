@@ -44,13 +44,13 @@ function App() {
     const fetchUser = async () => {
       const token = localStorage.getItem("token");
       if (token) {
-        const result = await Axios.get("http://localhost:8001/api/user/me", {
+        const result = await Axios.get("http://localhost:8000/api/user/me", {
           headers: {
             Authorization: `Bearer ${token}`,
           },
         });
+
         if (result.status === 200) {
-          console.log("dispatch app.js ==>", result.data);
           dispatch({
             type: "LOAD_USER",
             payload: result.data,
@@ -60,7 +60,6 @@ function App() {
     };
 
     fetchUser();
-
   }, []);
 
   return (

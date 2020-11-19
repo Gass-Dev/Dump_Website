@@ -29,13 +29,10 @@ function Mapbox() {
 
                 if (result.data.features.length) {
                     post.coordinates = result.data.features[0].geometry.coordinates
-                    // console.log(result.data.features[0].geometry.coordinates)
-                    console.log(result.data.features)
                 }
 
                 if (result.data.features.length) {
                     post.properties = result.data.features[0].properties.name
-                    console.log(result.data.features[0].properties.name)
                 }
 
                 return post;
@@ -43,7 +40,6 @@ function Mapbox() {
             })
 
             Promise.all(reports).then(values => {
-                // console.log("value", values);
                 setReportsData(values)
             })
         }
