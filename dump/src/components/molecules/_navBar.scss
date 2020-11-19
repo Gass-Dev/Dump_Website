@@ -1,41 +1,81 @@
 @import "../config/style.scss";
 
-.navBar {
+.auth_navBar {
     width: 100vw;
-    height: 15vh;
     display: flex;
-    flex-direction: row;
-    align-items: flex-start;
+    flex-direction: column;
     &_logo {
-        &_image {
-            &_link {
-                width: 30vw;
-            margin-top: 3vh;
-            margin-left: 1.5vh;
+        flex-direction: row;
+        align-items: center;
+        text-align:center;
+        height: 10vh;
+        border-bottom: 0.5px solid $color-trait;
             @include media(tablet) {
-                width: 20vw;
-                margin-top: 1.6vh;
+                display: flex;
             }
             @include media(desktop) {
-                width: 12vw;
-                margin-top: 1vh;
+                height: 12vh;
+                display: flex;
             }
-            }
+        &_link {
+                width: 30vw;
+                margin-top: 3vh;
+                margin-left: 1.5vh;
+                @include media(tablet) {
+                    width: 20vw;
+                    margin-top: 1.6vh;
+                }
+                @include media(desktop) {
+                    width: 12vw;
+                    margin-top: 1vh;
+                }
         }
+            
     }
-    &_report {
-        &_postReport{
+    &_button {
+        height: 8vh;
+        width: 100vw;
+        position: absolute;
+        bottom: 0px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-around;
+        border-top: 0.5px solid $color-trait;
+        @include media(tablet) {
+            position: none;
+            border-top: none;
+            top: 0px;
+            justify-content: flex-end;
+            margin-top: 1vh;
+        }
+        @include media(desktop) {
+            position: none;
+            border-top: none;
+            top: 0px;
+            justify-content: flex-end;
+            margin-top: 2vh;
+        }
+        &_report {
             text-decoration: none;
+            &_link {
+                text-decoration: none;
                 & button {
+                    text-decoration: none;
+                    background-color: $Pastel-salmon;
                     @include media(tablet) {
                         margin-right: 40px;
                     }
                     @include media(desktop) {
                         margin-right: 40px;
                     }
+                    &:hover {
+                        background-color: $Pastel-salmon-Dark;
+                        cursor: pointer;
+                    }
                 }
+            }
+            
         }
     }
-
 }
-

@@ -1,7 +1,7 @@
 // Imports
 import React, { useState } from 'react';
 import Axios from 'axios';
-import { Link } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import { useAlert } from 'react-alert';
 
 import Logo from '../../../assets/images/logo_dump.png';
@@ -9,8 +9,10 @@ import Logo from '../../../assets/images/logo_dump.png';
 require('./_postReport.scss');
 
 function PostRegister(props) {
+    const history = useHistory();
+    const userId = localStorage.getItem('userId');
     const [post, setPost] = useState(
-        { userName: '', numberStreet: '', street: '', postalCode: '', city: '', report: '' }
+        {numberStreet: '', street: '', postalCode: '', city: '', report: '', userId }
     );
 
     const [errorForm, setErrorForm] = useState(" ")
@@ -25,8 +27,9 @@ function PostRegister(props) {
         e.preventDefault()
         Axios.post('http://localhost:8000/api/post_reports/post', post)
             .then((response) => {
-                setPost({ userName: '', numberStreet: '', street: '', postalCode: '', city: '', report: '' })
+                setPost({numberStreet: '', street: '', postalCode: '', city: '', report: ''})
                 alert.show('Signalement enregistré 😊')
+                history.push('/')
             })
             .catch((error) => {
                 setErrorForm(error.response.data.error)
@@ -34,13 +37,7 @@ function PostRegister(props) {
     }
 
     return (
-        <form className="postRegisterForm" method="POST" action="/post_reports/" onSubmit={handleSubmit}>
-
-            <div className="postRegisterForm_nav">
-                <Link to='/' className="postRegisterForm_nav_logo">
-                    <img className="postRegisterForm_nav_logo_link" src={Logo} alt='logo' />
-                </Link>
-            </div>
+        <form className="postRegisterForm" method="POST" action="/post_reports/post" onSubmit={handleSubmit}>
 
             <div className="postRegisterForm_content">
                 <div className="postRegisterForm_content_title">
@@ -56,7 +53,7 @@ function PostRegister(props) {
                     </div>
 
                     <div className="postRegisterForm_content_type_dechet">    
-                        <label htmlFor="reportDechet">Déchet</label>
+                        <label htmlFor="reportDechet">Déchet     </label>
                         <input type="radio" id="reportDechet" value="reportDechet" name='report' onChange={handleChange} required />
                     </div>
                         

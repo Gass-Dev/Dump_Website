@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import Axios from 'axios';
 import { useAlert } from 'react-alert';
 import { AuthContext } from '../../../App';
@@ -9,6 +9,7 @@ import Logo from '../../../assets/images/logo_dump.png';
 require('./_login.scss');
 
 function Login() {
+    const history = useHistory();
     const { dispatch } = useContext(AuthContext);
     const [login, setLogin] = useState(
         { email: '', password: '', isSubmitting: false, errorMessage: null, }
@@ -39,12 +40,12 @@ function Login() {
             if (result.status===200){
                 return (
                     dispatch({type:'LOGIN', payload:result}),
-                    alert.show('Vous êtes connecté ;-)')
+                    alert.show('Vous êtes connecté ;-)'),
+                    history.push('/')
                     )
                 };
 
         } catch(error){
-            console.log(error.response)
             setLogin({
                 ...login,
                 isSubmitting: false,

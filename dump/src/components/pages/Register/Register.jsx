@@ -1,6 +1,6 @@
 // Imports
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import Axios from 'axios';
 import { useAlert } from 'react-alert';
 
@@ -9,12 +9,11 @@ import Logo from '../../../assets/images/logo_dump.png';
 require('./_register.scss');
 
 function Register(props) {
+    const history = useHistory();
     const [register, setRegister] = useState(
         { userName: '', email: '', password: '', firstName: '', lastName: '', numberStreet: '', street: '', postalCode: '', city: '' }
     );
-
     const [errorForm, setErrorForm] = useState(" ")
-
     const alert = useAlert()
 
     const handleChange = (event) => {
@@ -27,9 +26,9 @@ function Register(props) {
             .then((response) => {
                 setRegister({ userName: '', email: '', password: '', firstName: '', lastName: '', numberStreet: '', street: '', postalCode: '', city: '' })
                 alert.show('Inscription validée!')
+                history.push('/')
             })
             .catch((error) => {
-                // console.log(error.response)
                 setErrorForm(error.response.data.error)
             })
     }

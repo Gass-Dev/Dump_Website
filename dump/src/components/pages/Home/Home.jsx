@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import Mapbox from '../Mapbox/Mapbox';
-import NavBar from '../../molecules/NavBar';
+// import NavBar from '../../molecules/NavBar';
 import HomePublic from '../../molecules/HomePublic';
 import { AuthContext } from '../../../App';
 
@@ -16,7 +16,6 @@ function Home() {
     } else {
         return (
             <div>
-            <NavBar />
             <Mapbox />
             </div>
         )
