@@ -18,19 +18,17 @@ body {
     background-color: $color-background-white;
 }
 
-button {
+button{
     height: 4vh;
     width: 35vw;
     border: 1px;
-    color: $color-background-white;
     font-size: 0.6rem;
-    border-radius: 30px;
+    border-radius: 8px;
     margin: auto;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-around;
-    background-color: $Pastel-water-Dark;
     font-size: 1rem;
     @include media(tablet) {
         height: 6vh;
@@ -43,7 +41,6 @@ button {
         font-size: 1.3rem;
     }
     &:hover {
-        background-color: $Pastel-water;
         cursor: pointer;
     }
 }

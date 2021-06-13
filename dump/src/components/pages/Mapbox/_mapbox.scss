@@ -1,0 +1,16 @@
+@import "../../config/style.scss";
+
+.mapbox {
+    &_marker-btn {
+        background-color: transparent;
+        &:hover {
+            background-color: transparent;
+        }
+        &:active {
+            border-color: transparent;
+        }
+        &:before {
+                border-color: transparent;
+            }
+    }
+}
