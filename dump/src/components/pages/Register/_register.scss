@@ -55,6 +55,8 @@
             height: 6vh;
             margin-bottom: 40px;
             margin-top: 35px;
+            background-color:$Pastel-water-Dark;
+            color: white;
             @include media(desktop) {
             width: 30vw;
             }

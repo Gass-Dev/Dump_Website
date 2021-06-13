@@ -62,7 +62,8 @@
                 text-decoration: none;
                 & button {
                     text-decoration: none;
-                    background-color: $Pastel-salmon;
+                    background-color:$Pastel-water-Dark;
+                    color: white;
                     @include media(tablet) {
                         margin-right: 40px;
                     }
@@ -70,7 +71,8 @@
                         margin-right: 40px;
                     }
                     &:hover {
-                        background-color: $Pastel-salmon-Dark;
+                        background-color: $Pastel-water;
+                        color: white;
                         cursor: pointer;
                     }
                 }
