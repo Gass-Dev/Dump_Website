@@ -4,8 +4,6 @@ import Axios from 'axios';
 import { useHistory } from 'react-router-dom';
 import { useAlert } from 'react-alert';
 
-import Logo from '../../../assets/images/logo_dump.png';
-
 require('./_postReport.scss');
 
 function PostRegister(props) {

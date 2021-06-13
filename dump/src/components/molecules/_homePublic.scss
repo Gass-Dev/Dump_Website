@@ -57,7 +57,10 @@
             &_register {
                 text-decoration: none;
                 & button {
-                    background-color: $Pastel-salmon;
+                    border-color:$color-grey-light;
+                    background-color: white;
+                    border: solid 0.1em;
+                    color: $color-grey-light;
                     @include media(tablet) {
                         margin-right: 40px;
                     }
@@ -65,7 +68,10 @@
                         margin-right: 40px;
                     }
                     &:hover {
-                        background-color: $Pastel-salmon-Dark;
+                        background-color: $color-grey;
+                        background-color: white;
+                        border: solid 0.1em;
+                        color: $color-grey;
                         cursor: pointer;
                     }
                 }
@@ -73,11 +79,18 @@
             &_login {
                 text-decoration: none;
                 & button {
+                    background-color:$Pastel-water-Dark;
+                    color: white;
                     @include media(tablet) {
                         margin-right: 40px;
                     }
                     @include media(desktop) {
                         margin-right: 40px;
+                    }
+                    &:hover {
+                        background-color: $Pastel-water;
+                        color: white;
+                        cursor: pointer;
                     }
                 }
             }
